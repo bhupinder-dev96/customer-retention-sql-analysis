@@ -24,4 +24,5 @@ Analyze customer behavior and revenue trends to understand business performance.
 - Offer discounts for repeat customers
 
 ## Dashboard
-<img width="856" height="481" alt="dashboard" src="https://github.com/user-attachments/assets/d6e97ef0-c4c1-48c9-9f1c-8dfd1a37ea05" />
+<img width="857" height="484" alt="dashboard" src="https://github.com/user-attachments/assets/4ff70008-f7c8-4022-bc45-72accb004a57" />
+
