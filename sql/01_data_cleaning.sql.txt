@@ -1,0 +1,13 @@
+-- Check null values
+SELECT * FROM orders WHERE order_date IS NULL;
+
+-- Remove cancelled orders
+DELETE FROM orders WHERE status = 'cancelled';
+
+-- Format date properly
+UPDATE orders SET order_date = STR_TO_DATE(order_date, '%d-%m-%Y');
+
+-- Remove duplicates
+DELETE FROM orders WHERE order_id NOT IN (
+    SELECT MIN(order_id) FROM orders GROUP BY order_id
+);

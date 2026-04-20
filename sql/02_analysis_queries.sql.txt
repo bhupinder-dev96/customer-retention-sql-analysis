@@ -1,0 +1,57 @@
+Monthly Revenue
+-- Calculate monthly revenue trend
+SELECT 
+    DATE_FORMAT(order_date, '%Y-%m') AS month,
+    SUM(payment_value) AS revenue
+FROM orders o
+JOIN payments p ON o.order_id = p.order_id
+GROUP BY month;
+
+Top Customers
+-- Calculate Top buyers
+SELECT 
+    o.customer_id,
+    SUM(p.payment_value) AS total_spent
+FROM orders o
+JOIN payments p ON o.order_id = p.order_id
+GROUP BY o.customer_id
+ORDER BY total_spent DESC
+LIMIT 10;
+
+Repeat Customers
+-- Calculate valuable customers
+SELECT customer_id, COUNT(order_id) AS total_orders
+FROM orders
+GROUP BY customer_id
+HAVING COUNT(order_id) > 1;
+
+Retention 
+-- Calculate first and last order date of each customer
+SELECT 
+    customer_id,
+    MIN(order_date) AS first_order,
+    MAX(order_date) AS last_order
+FROM orders
+GROUP BY customer_id;
+
+
+
+AOV
+-- Calculate average order value
+SELECT 
+    SUM(payment_value) / COUNT(order_id) AS avg_order_value
+FROM payments;
+
+Total Orders
+-- Calculate total number of orders
+SELECT COUNT(order_id) AS total_orders FROM orders;
+
+Total Revenue
+-- Calculate total generated revenue
+SELECT SUM(payment_value) AS total_revenue FROM payments;
+
+
+Total Customers
+-- Calculate number of total customers
+SELECT COUNT(customer_id) AS total_customers FROM customers;
+
